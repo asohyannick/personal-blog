@@ -7,6 +7,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import databaseConfig from './config/db/databaseConfig.mongoDB';
 import authRoute from './controller/auth/auth.controller';
+import postRoute from './controller/post/post.controller';
 import notFound from './exception/404/notFound.middleware';
 import errorHanlder from './exception/500/errorHandler.middleware';
 const app: Application = express();
@@ -28,6 +29,7 @@ if (process.env.NODE_ENV as string === 'development') {
 }
 // Routes
 app.use(`/api/${API_VERSION}/auth`, authRoute);
+app.use(`/api/${API_VERSION}/post`, postRoute);
 app.use(notFound);
 app.use(errorHanlder)
 async function serve() {

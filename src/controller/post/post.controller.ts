@@ -1,9 +1,11 @@
 import express from 'express';
 import { authToken } from '../../middleware/auth/authToken.middleware';
 import { createPost, deletePost, fetchPost, fetchPosts, searchPost, updatePost } from '../../service/post/post.service';
+import schemaValidator from '../../util/schema.helper';
 const router = express.Router();
 router.post('/create-post',
     authToken,
+    schemaValidator("/post/create-post"),
     createPost
 );
 router.get('/fetch-posts',

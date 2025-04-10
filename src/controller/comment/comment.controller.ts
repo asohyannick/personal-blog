@@ -1,9 +1,11 @@
 import express from 'express';
 import { authToken } from '../../middleware/auth/authToken.middleware';
 import { createComment, deleteComment, fetchComment, fetchComments, updateComment } from '../../service/comment/comment.service';
+import schemaValidator from '../../util/schema.helper';
 const router = express.Router();
 router.post('/create-comment',
     authToken,
+    schemaValidator("/comment/create-comment"),
     createComment
 );
 router.get('/fetch-comments',

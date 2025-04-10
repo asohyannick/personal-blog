@@ -22,7 +22,6 @@ declare global {
 
 const authToken = (req: Request, res: Response, next: NextFunction) => {
     const token = req.cookies["auth"];
-    console.log('Cookies in authToken:', req.cookies); // Log cookies
     if (!token) {
         return res.status(StatusCodes.UNAUTHORIZED).json({ message: "Access Denied!" });
     }

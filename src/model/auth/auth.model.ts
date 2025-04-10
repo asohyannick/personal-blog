@@ -15,8 +15,8 @@ const authSchema: Schema = new Schema<IAuth>({
     default: false,
  },
  refreshToken:{
-    type: String,
-    trim: true,
+   type: String,
+   trim: true,
  },
 }, {timestamps: true});
 authSchema.pre<IAuth>('save', async function(next) {
